@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikacija za Vježbu Brzog Kucanja</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="typing.css">
+</head>
+<body>
+  <!-- Floating icons -->
+  <div class="floating-icon">⌨️</div>
+  <div class="floating-icon">💻</div>
+  <div class="floating-icon">🚀</div>
+  <div class="floating-icon">🏆</div>
+
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-keyboard"></i> Vježba Brzog Kucanja</h1>
+      <p>Poboljšajte svoju brzinu i tačnost kucanja uz našu aplikaciju</p>
+    </header>
+
+    <div class="app-container">
+      <div class="typing-section">
+        <div class="stats-container">
+          <!-- statovi -->
+        </div>
+        <div class="timer">
+          <i class="fas fa-clock"></i>
+          <span id="timer">00:60</span>
+        </div>
+        <div class="text-display" id="text-display">Učitavanje teksta za vježbu...</div>
+        <textarea class="input-area" id="typing-input" placeholder="Započnite tipkati ovdje kada budete spremni..." disabled></textarea>
+        <div class="controls">
+          <button class="btn" id="start-btn"><i class="fas fa-play"></i> Započni</button>
+          <button class="btn secondary" id="reset-btn" disabled><i class="fas fa-redo"></i> Resetuj</button>
+          <button class="btn secondary" id="new-text-btn"><i class="fas fa-sync"></i> Novi tekst</button>
+        </div>
+      </div>
+
+      <div class="results-section">
+        <h2 class="section-title">Vaši rezultati</h2>
+        <div class="accuracy-display">
+          <div class="accuracy-circle">
+            <div class="accuracy-value" id="accuracy-display">100%</div>
+          </div>
+        </div>
+        <div class="section-title">Historija</div>
+        <ul class="history-list" id="history-list"></ul>
+        <div class="section-title">Vaš napredak</div>
+        <div class="chart-container" id="chart-container"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2023 Aplikacija za Vježbu Brzog Kucanja | Sva prava zadržana</p>
+    </footer>
+  </div>
+
+  <script src="typing.js"></script>
+</body>
+</html>
