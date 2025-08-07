@@ -19,26 +19,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($username) || empty($email) || empty($pass) || empty($pass_confirm)) {
         $_SESSION['error'] = "Sva polja su obavezna.";
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = "Neispravan email.";
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
 
     if ($pass !== $pass_confirm) {
         $_SESSION['error'] = "Lozinke se ne podudaraju.";
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
 
     $stmt = $conn->prepare("SELECT id FROM korisnici WHERE username = ? OR email = ?");
     if (!$stmt) {
         $_SESSION['error'] = "Greška u pripremi provjere korisnika.";
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
     $stmt->bind_param("ss", $username, $email);
@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->num_rows > 0) {
         $_SESSION['error'] = "Korisničko ime ili email već postoji.";
         $stmt->close();
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
     $stmt->close();
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO korisnici (username, email, password) VALUES (?, ?, ?)");
     if (!$stmt) {
         $_SESSION['error'] = "Greška u pripremi unosa korisnika.";
-        header("Location: ../index.php#signup");
+        header("Location: index.php");
         exit;
     }
     $stmt->bind_param("sss", $username, $email, $pass_hash);
@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $_SESSION['error'] = "Došlo je do greške prilikom registracije.";
         $stmt->close();
-        header("Location: ../index.php");
+        header("Location: index.php");
         exit;
     }
 }

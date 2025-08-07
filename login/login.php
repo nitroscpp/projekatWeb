@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($username) || empty($pass)) {
         $_SESSION['error'] = "Sva polja su obavezna.";
-        header("Location: index.php#login");
+        header("Location: index.php");
         exit;
     }
 
@@ -30,16 +30,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (password_verify($pass, $hashed_password)) {
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;
-            header("Location: dashboard.php");
+            header("Location: ../dashboard.php");
             exit;
         } else {
             $_SESSION['error'] = "Pogrešna lozinka.";
-            header("Location: index.php#login");
+            header("Location: index.php");
             exit;
         }
     } else {
         $_SESSION['error'] = "Korisnik ne postoji.";
-        header("Location: index.php#login");
+        header("Location: index.php");
         exit;
     }
 }
